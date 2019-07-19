@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Campos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+    <h2>Campos</h2>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="vTbl" class="">
+        <div class="row">
+            <div class="form-inline">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
+                    <label for="cbxMunicipio">Municipio</label>
+                    <select class="form-control" id="cbxMunicipio"></select>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
+                    <label for="cbxSeccion">Seccion</label>
+                    <select class="form-control" id="cbxSeccion"></select>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
+                    <label for="cbxSubSeccion">Sub Seccion</label>
+                    <select class="form-control" id="cbxSubSeccion"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <button type="button" class="form-control btn btn-success" id="btnNew">Agregar Campos</button>
+            </div>
+        </div>
+        <div class="row">
+            <table id="tblJson">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>Id</td>
+                        <td>Nombre</td>
+                        <td>Formulario</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div id="vAdd">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Agregar Campos</h4>
+                        <br />
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="cbxAddMunicipio">Municipio</label>
+                            <select class="form-control" id="cbxAddMunicipio"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cbxAddSeccion">Seccion</label>
+                            <select class="form-control" id="cbxAddSeccion"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cbxAddSubSeccion">Sub Seccion</label>
+                            <select class="form-control" id="cbxAddSubSeccion"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pregunta</label>
+                            <input type="text" class="form-control" id="txtQuestion" />
+                            <button type="button" class="btn btn-success" id="btnAdd">Agregar</button>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre Cuestionario</label>
+                            <input type="text" class="form-control" id="txtNombre" />
+                        </div>
+                        <button type="button" class="btn btn-info" id="btnReturn">Regresar</button>
+                        <button type="button" class="btn btn-success" id="btnSave">Guardar</button>
+                        <button type="button" class="btn btn-danger" id="btnCancelar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Campos Agregados</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Preguntas Agregadas</label>
+                            <div id="txtTags" data-role="tagsinput"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*<script src="~/Content/script/preguntas.js"></script>*@
+<script src="~/Content/script/Campos.js"></script>

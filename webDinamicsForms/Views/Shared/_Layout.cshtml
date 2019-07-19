@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    
+    <script src="~/scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/toastr.min.js"></script>
+    <script src="~/scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Content/script/General/webMVC.js"></script>
+    <script src="~/Content/script/General/ajax.js"></script>
+    <script src="~/Content/script/General/constantes.js"></script>
+    <script src="~/Content/script/General/forms.js"></script>
+    <script src="~/Content/script/General/alerts.js"></script>
+    <script src="~/Content/script/General/validUser.js"></script>
+    <script src="~/Plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/Plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/Plugins/datatables/jszip.min.js"></script>
+    <script src="~/Plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/Plugins/datatables/vfs_fonts.js"></script>
+    <script src="~/Plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/Plugins/datatables/buttons.print.min.js"></script>
+    <script src="~/Plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="~/Plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/style/General/loader.css" rel="stylesheet" />
+    <link href="~/Content/style/General/style.css" rel="stylesheet" />
+    <link href="~/Content/style/General/tablas.css" rel="stylesheet" />
+    <link href="~/Content/style/General/webMVC.css" rel="stylesheet" />
+    <link href="~/Plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+    
+    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Application name", "Index", "Dinamic", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Campos", "Campos", "Dinamic", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Formularios", "Formulario", "Dinamic", new { area = "" }, new { @class = "navbar-brand" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+            @RenderBody()
+    </div>
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+
+</body>
+</html>

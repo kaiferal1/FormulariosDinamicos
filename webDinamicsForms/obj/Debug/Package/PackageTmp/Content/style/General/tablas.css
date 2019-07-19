@@ -1,0 +1,14 @@
+﻿.content-tbl {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    /*margin: 50px;*/
+}
+
+/*.content-tbl thead th {
+    font-size: 13px;
+}
+
+.content-tbl tbody td {
+    font-size: 10px;
+    }*/
