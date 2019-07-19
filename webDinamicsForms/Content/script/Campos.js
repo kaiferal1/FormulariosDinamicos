@@ -57,8 +57,6 @@ function asignarEventos() {
     btnAdd.click(function () {
         _Inx += 1;
         addTag(txtQuestion.val(), _Inx);
-
-        //s.alert({ flag:"1", msg:"rtdghc" });
     });
 
     btnSave.click(function () {
@@ -156,17 +154,11 @@ function cargarTabla(id) {
                         txtNombre.val(it.nombre);
 
                     });
-                    //$.each(datos.data.Table1, function (i, it) {
-                    //    _idCaptura = it.idCapturas
-                    //    asignarRespuestas(it.json);
-                    //});
                 }
                 vAdd.show();
                 vTbl.hide();
             });
     });
-
-
 }
 
 function addTag(txt, i) {
