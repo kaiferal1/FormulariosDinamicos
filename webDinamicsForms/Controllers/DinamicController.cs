@@ -47,7 +47,7 @@ namespace webDinamicsForms.Controllers
         {
             Session["IdProveedor"] = null;
             Session["tipoUser"] = null;
-            return Json(new JsonRest("/eisenmann/Home/Login", "1").ToString());
+            return Json(new JsonRest("/webDinamicsForms/Dinamic/Login", "1").ToString());
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace webDinamicsForms.Controllers
                             Session["idMunicipio"] = it["idMunicipio"];
                         }
                     }
-                    obj.mensaje = "/Dinamic/Index";
+                    obj.mensaje = "/webDinamicsForms/Dinamic/Index";
 
                     if (obj.data.ContainsKey("Table1"))
                     {

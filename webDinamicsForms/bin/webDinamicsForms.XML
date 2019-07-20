@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webDinamicsForms</name>
+    </assembly>
+    <members>
+        <member name="M:webDinamicsForms.Controllers.DinamicController.logout">
+            <summary>
+            Evento encargado de salir de la session en curso y redireccionar al login
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:webDinamicsForms.Controllers.DinamicController.loginUsers">
+            <summary>
+            Metodo para verificar la informacion dada y acceder con los permisos corespondientes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:webDinamicsForms.Controllers.DinamicController.ejecutarSP">
+            <summary>
+            /
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:webDinamicsForms.Estructura.Configuracion._rutaArchivos">
+            <summary>
+            Ruta donde se guardaran los archivos de las ordenes de compra
+            </summary>
+        </member>
+        <member name="F:webDinamicsForms.Estructura.Configuracion._rutaDescargas">
+            <summary>
+            Ruta ddonde se guardaran los archivos de manera temporal para su descarga por los usuarios; el contenido de esta carpeta se puede borrar sin problema
+            </summary>
+        </member>
+        <member name="F:webDinamicsForms.Estructura.Configuracion._selectSP">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:webDinamicsForms.Estructura.Configuracion._rutaXml">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:webDinamicsForms.Estructura.JsonRest.#ctor">
+            <summary>
+            Constructor de la clase
+            </summary>
+        </member>
+        <member name="M:webDinamicsForms.Estructura.JsonRest.#ctor(System.String,System.String)">
+            <summary>
+            Constructor de la clase y se asignan de inicio el mensaje y la bandera
+            </summary>
+            <param name="msg">Mensaje informativo que se mostrara al usuario</param>
+            <param name="flag">Indica si es un error o todo esta bien durante el procedimiento</param>
+        </member>
+        <member name="F:webDinamicsForms.Estructura.ParametrosSp._Correo">
+            <summary>
+            opcion ya no usuada ya no usar
+            </summary>
+        </member>
+        <member name="P:webDinamicsForms.Estructura.ParametrosSp.Correo">
+            <summary>
+            opcion ya no usuada ya no usar
+            </summary>
+        </member>
+        <member name="F:webDinamicsForms.Models.Conexion._strConect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:webDinamicsForms.Models.Conexion.json">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:webDinamicsForms.Models.Conexion._reader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:webDinamicsForms.Models.Conexion._conect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:webDinamicsForms.Models.Conexion._comand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:webDinamicsForms.Models.Conexion._dataAdapter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:webDinamicsForms.Models.Conexion._dataSet">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:webDinamicsForms.Models.Conexion._tbl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:webDinamicsForms.Models.Conexion.optSp">
+            <summary>
+            Lista de parametros obtenidos para cada sp que se selecciona
+            </summary>
+        </member>
+        <member name="M:webDinamicsForms.Models.Conexion.start">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:webDinamicsForms.Models.Conexion.ConvertDataTabletoString(System.Data.DataTable)">
+            <summary>
+            
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webDinamicsForms.Models.Conexion.convertDataTableToList(System.Data.DataTable)">
+            <summary>
+            
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webDinamicsForms.Models.Conexion.loadParamsSp(System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Obtiene los parametros del sp y los machea con los pasador por la vista
+            </summary>
+            <param name="paramsSP"></param>
+            <param name="sp"></param>
+        </member>
+        <member name="M:webDinamicsForms.Models.Conexion.execSP(webDinamicsForms.Estructura.ParametrosSp)">
+            <summary>
+            Metodo que se encarga de ejecutar los procedimientos almacenados y regresa una respuesta de la base de datos
+            </summary>
+            <param name="param">Clase en la que se almacenan os parametros que se nesesitan para elsp</param>
+            <returns>una cadena con formato JSON </returns>
+        </member>
+        <member name="M:webDinamicsForms.Models.Conexion.execString(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
