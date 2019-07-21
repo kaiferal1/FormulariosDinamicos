@@ -58,9 +58,9 @@ function asignarEventos() {
         }
     });
 
-    btnCancelar.click(function () {
-        limpiar();
-    });
+    //btnCancelar.click(function () {
+    //    limpiar();
+    //});
 
     cbxMunicipio.change(function () {
         cargarTabla($(this).val() + '-' + $(this).find("option:selected").text());
@@ -72,6 +72,9 @@ function asignarEventos() {
         cargarSeccion("cbxSubSeccion", $(this).val());
     });
 
+    cbxSubSeccion.change(function () {
+        cargarTabla($(this).val());
+    });
 }
 
 
@@ -81,7 +84,7 @@ function asignarEventos() {
 
 function limpiar() {
     _opt = 1;
-    inputs.remove();
+    //inputs.remove();
 }
 
 function cargarTabla(id) {
@@ -162,7 +165,8 @@ function cargarMunicipio() {
 }
 
 function cargarSeccion(cbxE, id) {
-    s.cbx({
+
+    let c = {
         ajax: {
             data: {
                 sp: _SP
@@ -170,13 +174,13 @@ function cargarSeccion(cbxE, id) {
                 , idPadre: id
             }
         }
-        , selects: {
-            cbxE: {
-                tbl: "Table0"
+      , selects: {}
+    };
+    c.selects[cbxE] = {
+        tbl: "Table0"
                 , inicial: true
-            }
-        }
-    });
+    };
+    s.cbx(c);
 }
 
 function saveForms() {
