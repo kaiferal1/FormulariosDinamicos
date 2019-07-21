@@ -79,11 +79,14 @@ function asignarEventos() {
     cbxMunicipio.change(function () {
         cargarTabla($(this).val() + '-' + $(this).find("option:selected").text());
         cargarSeccion("cbxSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
+        cbxSeccion.val("0");
+        cbxSubSeccion.val("0");
     });
 
     cbxSeccion.change(function () {
         cargarTabla($(this).val());
         cargarSeccion("cbxSubSeccion", $(this).val());
+        cbxSubSeccion.val("0");
     });
 
     cbxSubSeccion.change(function () {
@@ -92,12 +95,21 @@ function asignarEventos() {
 
     cbxAddMunicipio.change(function () {
         cargarSeccion("cbxAddSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
+        cbxAddSeccion.val("0");
+        cbxAddSubSeccion.val("0");
     });
 
     cbxAddSeccion.change(function () {
         cargarSeccion("cbxAddSubSeccion", $(this).val());
+        cbxAddSubSeccion.val("0");
     });
 
+    txtQuestion.keypress(function (e) {
+        //no recuerdo la fuente pero lo recomiendan para
+        //mayor compatibilidad entre navegadores.
+        let code = (e.keyCode ? e.keyCode : e.which);
+        enter(code);
+    });
 }
 
 /*
@@ -106,9 +118,8 @@ function asignarEventos() {
 
 function limpiar() {
     txtQuestion.val("");
-    txtTags.tagsinput('remove', 'some tag');
+    txtTags.tagsinput('removeAll');
     _opt = 1;
-
 }
 
 function cargarTabla(id) {
@@ -152,7 +163,12 @@ function cargarTabla(id) {
                 if (datos.bandera == "1") {
                     $.each(datos.data.Table0, function (i, it) {
                         txtNombre.val(it.nombre);
-
+                        //cbxAddMunicipio.val(cbxMunicipio.val());
+                        //cbxAddMunicipio.change();
+                        //cbxAddSeccion.change();
+                        //cbxAddSeccion.val(cbxSeccion.val());
+                        //cbxAddSubSeccion.change();
+                        //cbxAddSubSeccion.val(cbxSubSeccion.val());
                     });
                 }
                 vAdd.show();
@@ -244,22 +260,26 @@ function cargarSeccion(cbxE, id) {
 }
 
 function idSeccion() {
-    if (cbxAddMunicipio.val() != undefined) {
-        if (cbxAddSeccion.val() != undefined) {
-            if (cbxAddSubSeccion.val() != undefined) {
-                return cbxAddSubSeccion.val();
-            } else { return cbxAddSeccion.val(); }
-        } else {
-            if (cbxAddMunicipio.val() == "0") {
-                return "0";
-            }
-            else {
-                return cbxAddMunicipio.val() + '-' + cbxAddMunicipio.find("option:selected").text();
+    let id = "0"
+    if (cbxAddMunicipio.val() != undefined && cbxAddMunicipio.val() != "0") {
+        id = cbxAddMunicipio.val() + '-' + cbxAddMunicipio.find("option:selected").text();
+        if (cbxAddSeccion.val() != undefined && cbxAddSeccion.val() != "0") {
+            id = cbxAddSeccion.val();
+            if (cbxAddSubSeccion.val() != undefined && cbxAddSubSeccion.val() != "0") {
+                id = cbxAddSubSeccion.val();
             }
         }
     }
-    else { return "0"; }
+    return id;
 }
+
+function enter(code) {
+    if (code == 13) {
+        _Inx += 1;
+        addTag(txtQuestion.val(), _Inx);
+    }
+}
+
 
 /*
  * Ejecuta los metodos Iniciales
