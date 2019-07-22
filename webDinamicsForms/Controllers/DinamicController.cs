@@ -161,7 +161,7 @@ namespace webDinamicsForms.Controllers
                 {
                     if (param.Parametros["nombre"].Length > 0)
                     {
-                        dropCreat = dropCreat.Replace("{item}", param.Parametros["nombre"]);
+                        dropCreat = dropCreat.Replace("{item}", param.Parametros["nombre"].Replace(" ","_"));
                         if (param.Parametros.ContainsKey("FormHTML"))
                         {
                             List<JsonCampos> list = JsonConvert.DeserializeObject<List<JsonCampos>>(param.Parametros["FormHTML"]);
@@ -206,7 +206,7 @@ namespace webDinamicsForms.Controllers
                             param.Sp = datos["sp"].ToString();
                             break;
                         case "nombre":
-                            query = query.Replace("{item}", datos["nombre"].ToString())+ " SELECT ";
+                            query = query.Replace("{item}", datos["nombre"].ToString().Replace(" ","_"))+ " SELECT ";
                             break;
                         case "json":
                             ltsR = datos["json"].ToString();
