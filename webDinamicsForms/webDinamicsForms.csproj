@@ -128,7 +128,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\script\dinamic.js" />
     <Content Include="Content\script\formulario.js" />
     <Content Include="Content\script\General\ajax.js" />
     <Content Include="Content\script\General\alerts.js" />
@@ -139,6 +138,7 @@
     <Content Include="Content\script\General\webMVC.js" />
     <Content Include="Content\script\login.js" />
     <Content Include="Content\script\Campos.js" />
+    <Content Include="Content\script\Resultados.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style\General\loader.css" />
     <Content Include="Content\style\General\style.css" />
@@ -234,6 +234,7 @@
     <Content Include="scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Dinamic\Login.cshtml" />
+    <Content Include="Views\Dinamic\Resultados.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

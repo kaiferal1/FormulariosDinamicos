@@ -7,11 +7,9 @@ let vTbl
     , cbxSubSeccion
     , tblJson
     , vAdd
-    , lblTitulo
-    , inputs
     , btnReturn
     , btnSave
-    , btnCancelar;
+    , tblDinamic;
 
 /**
  * Variables internas
@@ -28,11 +26,9 @@ function obtenerControles() {
     cbxSubSeccion = $("#cbxSubSeccion");
     tblJson = $("#tblJson").DataTable(s.tbls());
     vAdd = $("#vAdd");
-    lblTitulo = $("#lblTitulo");
-    inputs = $("#inputs");
     btnReturn = $("#btnReturn");
     btnSave = $("#btnSave");
-    btnCancelar = $("#btnCancelar");
+    tblDinamic = $("#tblDinamic");
 }
 
 /*
@@ -58,10 +54,6 @@ function asignarEventos() {
         }
     });
 
-    //btnCancelar.click(function () {
-    //    limpiar();
-    //});
-
     cbxMunicipio.change(function () {
         cargarTabla($(this).val() + '-' + $(this).find("option:selected").text());
         cargarSeccion("cbxSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
@@ -77,14 +69,12 @@ function asignarEventos() {
     });
 }
 
-
 /*
  *Eventos
  */
 
 function limpiar() {
     _opt = 1;
-    //inputs.remove();
 }
 
 function cargarTabla(id) {
@@ -107,7 +97,6 @@ function cargarTabla(id) {
                         s.icos()
                         , it.idFormulario
                         , it.nombre
-                        //, it.idSeccion
                     ]).draw(false);
                 });
             }
@@ -120,26 +109,28 @@ function cargarTabla(id) {
     tblJson.on('click', '.btnEdit', function () {
         let dataRow = tblJson.row($(this).parent().parent()).data();
         _Id = dataRow[1];
-        let x = s.ajax({ data: { sp: _SP, opc: 1, idFormulario: _Id } });
+        let x = s.ajax({ data: { sp: _SP, opc: 4, idFormulario: _Id } });
         $.ajax(x)
             .done(function (e) {
                 let datos = JSON.parse(e);
                 console.log(datos);
                 if (datos.bandera == "1") {
+                    let tt = $("<table id='tblGenerate'><thead><tr></tr></thead><tbody></tbody></table>");
                     $.each(datos.data.Table0, function (i, it) {
-                        let arr = new Array();
-                        lblTitulo.html(it.nombre);
-                        s.inputs({
-                            box: "inputs"
-                            , data: JSON.parse(it.FormHTML)
-                        });
-                        
+                        tt.find("thead tr").append($("<th>", { html: it.NAME }));
                     });
-                    //$.each(datos.data.Table1, function (i, it) {
-                    //    _idCaptura = it.idCapturas
-                    //    //asignarRespuestas(it.json);
-                    //});
+                    let ar = new Array();
+                    $.each(datos.data.Table0, function (i, it) {
+                        ar.push({ "data": "" + it.NAME });
+                    });
+                    console.log(ar);
+                    $("#tblDinamic").append(tt);
+                    let t = $("#tblGenerate").DataTable({
+                        data: datos.data.Table1
+                        , columns: ar
+                    });
                 }
+                s.alert({ flag: datos.bandera, msg: datos.mensaje });
                 vAdd.show();
                 vTbl.hide();
             });
@@ -183,52 +174,7 @@ function cargarSeccion(cbxE, id) {
     s.cbx(c);
 }
 
-function saveForms() {
-    
-    var z = s.ajax({
-        funcion: "saveResult"
-            ,data: {
-                sp: _SP
-                , opc: _opt
-                , idForm: _Id
-                , json: generateJSON()
-                , nombre: lblTitulo.html()
-                , idCapturas :_idCaptura
-            }
-        });
 
-        $.ajax(z)
-            .done(function (e) {
-                let datos = JSON.parse(e);
-                //_opt = 1;
-                $("input[type=text]").val("");
-                //cargarTabla();
-                //vTbl.show();
-                //vAdd.hide();
-                s.alert({ flag: datos.bandera, msg: datos.mensaje });
-            })
-            .fail(function (e) {
-                s.alert({ flag: "-2" });
-            });   
-}
-
-function generateJSON() {
-    let tmp = $("#inputs input"), list = new Array();
-
-    $.each(tmp, function (i, it) {
-        list.push({ id: $(it).parent().find("label").text(), text: $(it).val() });
-    });
-
-    return JSON.stringify(list);
-}
-
-function asignarRespuestas(j) {
-    let data = JSON.parse(j);
-    $.each(data, function (i, it) {
-        $("#" + it.id).val(it.R);
-    });
-
-}
 
 /*
  * Ejecuta los metodos Iniciales

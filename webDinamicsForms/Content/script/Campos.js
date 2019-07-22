@@ -203,7 +203,8 @@ function saveTags() {
     let idSec = idSeccion();
     if (idSec != "0") {
         var z = s.ajax({
-            data: {
+            funcion:"saveFrm"
+            ,data: {
                 sp: _SP
                 , opc: _opt
                 , idMunicipio: _IDMun //id temporal cambiar por uno correvto

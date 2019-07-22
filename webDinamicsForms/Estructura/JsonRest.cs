@@ -104,4 +104,34 @@ namespace webDinamicsForms.Estructura
         }
 
     }
+
+    public class JsonCampos
+    {
+        private string _id = "0";
+        private string _text = "--";
+
+        public string id
+        {
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+                this._id = value;
+            }
+        }
+
+        public string text
+        {
+            get
+            {
+                return this._text;
+            }
+            set
+            {
+                this._text = value;
+            }
+        }
+    }
 }
