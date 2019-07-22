@@ -45,8 +45,10 @@
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+
 </head>
 <body>
+    
     <div class="navbar navbar-inverse ">
         <div class="">
             <div class="navbar-header">
@@ -58,10 +60,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Application name", "Index", "Dinamic", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Campos", "Campos", "Dinamic", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Formularios", "Formulario", "Dinamic", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Resultados", "Resultados", "Dinamic", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li ><a href="../Dinamic/Index" class="admin">Index</a></li>
+                    <li ><a href="../Dinamic/Campos" class="admin">Campos</a></li>
+                    <li><a href="../Dinamic/Formulario">Formularios</a></li>
+                    <li><a href="../Dinamic/Resultados">Formularios</a></li>
                 </ul>
             </div>
         </div>
@@ -107,6 +109,13 @@
                 .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
 
         });
+    </script>
+    <script type="text/javascript">
+        const _IDMunicipio = '@Session["idMunicipio"]';
+        console.log(_IDMunicipio);
+        if (_IDMunicipio == 1) {
+            $("a.admin").hide();
+        } else { $("a.admin").show(); }
     </script>
 </body>
 </html>
