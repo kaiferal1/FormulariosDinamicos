@@ -16,7 +16,7 @@
     <RootNamespace>webDinamicsForms</RootNamespace>
     <AssemblyName>webDinamicsForms</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -128,6 +129,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatable\bootstrap.css" />
+    <Content Include="Content\datatable\dataTables.bootstrap4.min.css" />
     <Content Include="Content\script\formulario.js" />
     <Content Include="Content\script\General\ajax.js" />
     <Content Include="Content\script\General\alerts.js" />
@@ -140,6 +143,7 @@
     <Content Include="Content\script\Campos.js" />
     <Content Include="Content\script\Resultados.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\style - dos.css" />
     <Content Include="Content\style\General\loader.css" />
     <Content Include="Content\style\General\style.css" />
     <Content Include="Content\style\General\tablas.css" />
@@ -260,7 +264,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50123</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/webDinamicsForms</IISUrl>
+          <IISUrl>http://localhost:9659/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
