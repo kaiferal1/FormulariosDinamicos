@@ -94,7 +94,7 @@ function cargarTabla(id) {
                 tblJson.clear().draw();
                 $.each(datos.data.Table0, function (i, it) {
                     tblJson.row.add([
-                        s.icos()
+                        s.icos({ ico: { prop: { class: "fas fa-clipboard-list fa-1x" } } })
                         , it.idFormulario
                         , it.nombre
                     ]).draw(false);
@@ -113,8 +113,12 @@ function cargarTabla(id) {
         $.ajax(x)
             .done(function (e) {
                 let datos = JSON.parse(e);
-                console.log(datos);
+
                 if (datos.bandera == "1") {
+                    console.log($("#tblGenerate"));
+                    console.log($("#tblGenerate").length);
+                    //if ($("#tblGenerate"))
+                    //$("#tblGenerate").destroy();
                     let tt = $("<table id='tblGenerate'><thead><tr></tr></thead><tbody></tbody></table>");
                     $.each(datos.data.Table0, function (i, it) {
                         tt.find("thead tr").append($("<th>", { html: it.NAME }));
