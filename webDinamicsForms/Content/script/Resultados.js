@@ -116,9 +116,11 @@ function cargarTabla(id) {
 
                 if (datos.bandera == "1") {
                     console.log($("#tblGenerate"));
-                    console.log($("#tblGenerate").length);
-                    //if ($("#tblGenerate"))
-                    //$("#tblGenerate").destroy();
+                    if ($("#tblGenerate").length > 0) {
+                        let ss = $("#tblGenerate").DataTable();
+                        ss.destroy();
+                        $("#tblGenerate").remove();
+                    }
                     let tt = $("<table id='tblGenerate'><thead><tr></tr></thead><tbody></tbody></table>");
                     $.each(datos.data.Table0, function (i, it) {
                         tt.find("thead tr").append($("<th>", { html: it.NAME }));

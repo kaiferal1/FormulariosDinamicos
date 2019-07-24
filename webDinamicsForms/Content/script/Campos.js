@@ -14,7 +14,10 @@ var txtQuestion
     , cbxSubSeccion
     , cbxAddMunicipio
     , cbxAddSeccion
-    , cbxAddSubSeccion;
+    , cbxAddSubSeccion
+    , txtTgsOptions
+    , txtOpt
+    , btnAddOpt;
 
 
 var _opt = 1, _Id = 0, _IDMun =0, _SP = "Formularios_CRUD", _Inx = 0;
@@ -39,6 +42,9 @@ function obtenerControles() {
     cbxAddSeccion = $("#cbxAddSeccion");
     cbxAddSubSeccion = $("#cbxAddSubSeccion");
     btnReturn = $("#btnReturn");
+    txtTgsOptions = $("#txtTgsOptions");
+    txtOpt = $("#txtOpt");
+    btnAddOpt = $("#btnAddOpt");
 }
 
 /*
@@ -54,11 +60,22 @@ function asignarEventos() {
        , itemText: 'text'
     });
 
+    txtTgsOptions.tagsinput({
+        itemValue: 'id'
+        , itemText: 'text'
+        , tagClass: "label label-success"
+    });
+
     btnAdd.click(function () {
         _Inx += 1;
         addTag(txtQuestion.val(), _Inx);
     });
 
+    btnAddOpt.click(function () {
+        _Inx += 1;
+        addOpt(txtOpt.val(), _Inx);
+    });
+    
     btnSave.click(function () {
         _opt = 1;
         saveTags();
@@ -134,6 +151,7 @@ function asignarEventos() {
 function limpiar() {
     txtQuestion.val("");
     txtTags.tagsinput('removeAll');
+    txtTgsOptions.tagsinput('removeAll');
     _opt = 1;
 }
 
@@ -196,6 +214,13 @@ function addTag(txt, i) {
     if (txt.length > 0) {
         txtTags.tagsinput("add", { id: i, text: txt });
         txtQuestion.val("").focus();
+    }
+}
+
+function addOpt(txt, i) {
+    if (txt.length > 0) {
+        txtTgsOptions.tagsinput("add", { id: i, text: txt });
+        txtOpt.val("").focus();
     }
 }
 
