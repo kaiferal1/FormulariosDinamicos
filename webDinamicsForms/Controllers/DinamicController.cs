@@ -56,7 +56,7 @@ namespace webDinamicsForms.Controllers
         {
             Session["IdProveedor"] = null;
             Session["tipoUser"] = null;
-            return Json(new JsonRest("/webDinamicsForms/Dinamic/Login", "1").ToString());
+            return Json(new JsonRest("/Dinamic/Dinamic/Login", "1").ToString());
         }
 
         /// <summary>

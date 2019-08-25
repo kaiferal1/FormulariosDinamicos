@@ -349,10 +349,7 @@ function saveTags() {
 
     console.log(txtTags.tagsinput("items"));
     console.log(jsonForms);
-    
-    
-    
-    console.log(jsonForms);
+    console.log(JSON.stringify(jsonForms));
 
     let idSec = idSeccion();
     if (idSec != "0") {
