@@ -372,19 +372,19 @@ function saveTags() {
             }
         });
 
-        //$.ajax(z)
-        //    .done(function (e) {
-        //        let datos = JSON.parse(e);
-        //        _opt = 1;
-        //        limpiar();
-        //        cargarTabla();
-        //        vTbl.show();
-        //        vAdd.hide();
-        //        s.alert({ flag: datos.bandera, msg: datos.mensaje });
-        //    })
-        //    .fail(function (e) {
-        //        s.alert({ flag: "-2" });
-        //    });
+        $.ajax(z)
+            .done(function (e) {
+                let datos = JSON.parse(e);
+                _opt = 1;
+                limpiar();
+                cargarTabla();
+                vTbl.show();
+                vAdd.hide();
+                s.alert({ flag: datos.bandera, msg: datos.mensaje });
+            })
+            .fail(function (e) {
+                s.alert({ flag: "-2" });
+            });
     }
     else {
         s.alert({ flag: "-1", msg: "Aun no se ha seleccionado un Municipio o Seccion o Subseccion" });
