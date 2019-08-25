@@ -131,6 +131,7 @@
     <Content Include="Content\script\General\snippet.js" />
     <Content Include="Content\script\General\webMVC.js" />
     <Content Include="Content\script\Login.js" />
+    <Content Include="Content\script\Plantillas.js" />
     <Content Include="Content\script\Resultados.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style\General\loader.css" />
@@ -192,6 +193,7 @@
     <Content Include="Plugins\bootstrap-tagsinput\bootstrap-tagsinput.min.js.map" />
     <Content Include="Plugins\bootstrap-tagsinput\bootstrap-tagsinput.zip" />
     <Content Include="Plugins\datatables\json\scroller-demo.json" />
+    <None Include="Properties\PublishProfiles\dinamic.pubxml" />
     <None Include="scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="scripts\jquery-3.4.1.js" />
     <Content Include="scripts\jquery-3.4.1.min.js" />
@@ -229,6 +231,7 @@
     <Content Include="Views\Dinamic\Campos.cshtml" />
     <Content Include="Views\Dinamic\Formulario.cshtml" />
     <Content Include="Views\Dinamic\Resultados.cshtml" />
+    <Content Include="Views\Dinamic\Plantillas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

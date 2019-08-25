@@ -37,6 +37,12 @@ namespace webDinamicsForms.Controllers
         {
             return View();
         }
+
+        public ActionResult Plantillas()
+        {
+            return View();
+        }
+
         #endregion
 
         #region Metodos
@@ -84,7 +90,7 @@ namespace webDinamicsForms.Controllers
                             Session["idMunicipio"] = it["idMunicipio"];
                         }
                     }
-                    obj.mensaje = "../Dinamic/Index";//webDinamicsForms
+                    obj.mensaje = "Dinamic/Dinamic/Index";//
 
                     if (obj.data.ContainsKey("Table1"))
                     {

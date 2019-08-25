@@ -1,41 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Campos";
+    ViewBag.Title = "Plantillas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div id="vTbl">
     <div class="row">
         <div class="col-lg-12">
             <div class="card-box">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="">
-                            <label for="cbxMunicipio">Municipio</label>
-                            <select class="form-control" id="cbxMunicipio"></select>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4">
-                        <div class="">
-                            <label for="cbxSeccion">Seccion</label>
-                            <select class="form-control" id="cbxSeccion"></select>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4">
-                        <div class="">
-                            <label for="cbxSubSeccion">Sub Seccion</label>
-                            <select class="form-control" id="cbxSubSeccion"></select>
-                        </div>
-
-                    </div>
-                </div>
-                <br />
-                <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <button type="button" class="btn btn-danger waves-light waves-effect" id="btnNew">Nuevo Formulario</button>
+                        <button type="button" class="btn btn-danger waves-light waves-effect" id="btnNew">Nueva Plantilla</button>
                     </div>
                 </div>
                 <div class="row">
@@ -77,60 +52,22 @@
                     <br />
                 </div>
                 <div class="card-body">
-                    
-                        <div class="form-group">
-                            <label for="cbxfiltro1">Filtro 1</label>
-                            <select class="form-control" id="cbxfiltro1"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cbxfiltro2">Filtro 2</label>
-                            <select class="form-control" id="cbxfiltro2"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cbxfiltro3">Filtro 3</label>
-                            <select class="form-control" id="cbxfiltro3"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cbxfiltro4">Filtro 4</label>
-                            <select class="form-control" id="cbxfiltro4"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cbxfiltro5">Filtro 5</label>
-                            <select class="form-control" id="cbxfiltro5"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cbxfiltro6">Filtro 6</label>
-                            <select class="form-control" id="cbxfiltro6"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cbxfiltro7">Filtro 7</label>
-                            <select class="form-control" id="cbxfiltro7"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cbxfiltro8">Filtro 8</label>
-                            <select class="form-control" id="cbxfiltro8"></select>
-                        </div>
 
                     <div class="form-group">
-                        <label for="cbxPlantillas">Plantillas</label>
-                        <select class="form-control" id="cbxPlantillas"></select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nombre Formulario</label>
+                        <label>Nombre Plantilla</label>
                         <input type="text" class="form-control" id="txtNombre" maxlength="120" />
                     </div>
                     <div class="form-group">
                         <label for="cbxTipoCtrl">Tipo de Control</label>
                         <select class="form-control" id="cbxTipoCtrl">
                             <option value="text" selected>Texto</option>
-                            <option value="date" >Fecha</option>
-                            <option value="number" >Numeros</option>
-                            <option value="email" >Correo</option>
-                            <option value="tel" >Telefono</option>
+                            <option value="date">Fecha</option>
+                            <option value="number">Numeros</option>
+                            <option value="email">Correo</option>
+                            <option value="tel">Telefono</option>
                             <option value="checkbox">Seleccion Multiple</option>
                             <option value="radio">Seleccion Opcional</option>
-                            <option value="select" >Lista de Opciones</option>
+                            <option value="select">Lista de Opciones</option>
                         </select>
                     </div>
 
@@ -145,7 +82,7 @@
                         <label>Campo</label>
                         <input type="text" class="form-control" id="txtQuestion" maxlength="100" />
                         <button type="button" class="btn btn-success" id="btnAdd">Agregar</button>
-                        
+
                     </div>
                     <div class="form-group">
                         <label for="txtTags">Campos Agregados</label>
@@ -160,6 +97,5 @@
     </div>
 </div>
 
-<script src="~/Content/script/Campos.js"></script>
-
+<script src="~/Content/script/Plantillas.js"></script>
 

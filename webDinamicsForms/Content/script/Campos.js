@@ -12,9 +12,17 @@ var txtQuestion
     , cbxMunicipio
     , cbxSeccion
     , cbxSubSeccion
-    , cbxAddMunicipio
-    , cbxAddSeccion
-    , cbxAddSubSeccion
+    //, cbxAddMunicipio
+    //, cbxAddSeccion
+    //, cbxAddSubSeccion
+    , cbxfiltro1
+    , cbxfiltro2
+    , cbxfiltro3
+    , cbxfiltro4
+    , cbxfiltro5
+    , cbxfiltro6
+    , cbxfiltro7
+    , cbxfiltro8
     //, txtTgsOptions
     , txtOpt
     , btnAddOpt
@@ -22,10 +30,11 @@ var txtQuestion
     , divOpt
     , txtOpt
     //, btnAddOpt
-    , txtTagsOpt;
+    , txtTagsOpt
+    , cbxPlantillas;
 
 
-var _opt = 1, _Id = 0, _IDMun =0, _SP = "Formularios_CRUD", _Inx = 0, _InxOpt = 0;
+var _opt = 1, _Id = 0, _IDMun =0, _SP = "Formularios_CRUD", _Inx = 0, _InxOpt = 0, jsonForms=new Object();
 
 /*
  *Obtener los controles 
@@ -43,9 +52,9 @@ function obtenerControles() {
     cbxMunicipio = $("#cbxMunicipio");
     cbxSeccion = $("#cbxSeccion");
     cbxSubSeccion = $("#cbxSubSeccion");
-    cbxAddMunicipio = $("#cbxAddMunicipio");
-    cbxAddSeccion = $("#cbxAddSeccion");
-    cbxAddSubSeccion = $("#cbxAddSubSeccion");
+    //cbxAddMunicipio = $("#cbxAddMunicipio");
+    //cbxAddSeccion = $("#cbxAddSeccion");
+    //cbxAddSubSeccion = $("#cbxAddSubSeccion");
     btnReturn = $("#btnReturn");
     ///txtTgsOptions = $("#txtTgsOptions");
     txtOpt = $("#txtOpt");
@@ -55,6 +64,16 @@ function obtenerControles() {
     //txtOpt = $("#txtOpt");
     btnAddOpt = $("#btnAddOpt");
     txtTagsOpt = $("#txtTagsOpt");
+
+    cbxfiltro1 = $("#cbxfiltro1");
+    cbxfiltro2 = $("#cbxfiltro2");
+    cbxfiltro3 = $("#cbxfiltro3");
+    cbxfiltro4 = $("#cbxfiltro4");
+    cbxfiltro5 = $("#cbxfiltro5");
+    cbxfiltro6 = $("#cbxfiltro6");
+    cbxfiltro7 = $("#cbxfiltro7");
+    cbxfiltro8 = $("#cbxfiltro8");
+    cbxPlantillas = $("#cbxPlantillas");
 }
 
 /*
@@ -106,47 +125,123 @@ function asignarEventos() {
     });
 
     cbxMunicipio.change(function () {
-        cbxAddMunicipio.val($(this).val());
+        //cbxAddMunicipio.val($(this).val());
         cargarSeccion("cbxSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
-        cargarSeccion("cbxAddSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
+        //cargarSeccion("cbxAddSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
         
         cbxSeccion.val("0");
         cbxSubSeccion.val("0");
 
-        cbxAddSeccion.val("0");
-        cbxAddSubSeccion.val("0");
+        //cbxAddSeccion.val("0");
+        //cbxAddSubSeccion.val("0");
 
         cargarTabla($(this).val() + '-' + $(this).find("option:selected").text());
     });
 
     cbxSeccion.change(function () {
-        cbxAddSeccion.val($(this).val());
+        //cbxAddSeccion.val($(this).val());
 
-        cbxAddSubSeccion.val("0");
+        //cbxAddSubSeccion.val("0");
 
         cbxSubSeccion.val("0");
         
-        cargarSeccion("cbxSubSeccion", $(this).val());
-        cargarSeccion("cbxAddSubSeccion", $(this).val());
+        //cargarSeccion("cbxSubSeccion", $(this).val());
+        //cargarSeccion("cbxAddSubSeccion", $(this).val());
 
         cargarTabla($(this).val());
         
     });
 
-    cbxSubSeccion.change(function () {
-        cargarTabla($(this).val());
+    cbxfiltro1.change(function () {
+        cargarSeccion("cbxfiltro2", $(this).val() + '-' + $(this).find("option:selected").text());
+        cbxfiltro2.val("0");
+        cbxfiltro3.val("0");
+        cbxfiltro4.val("0");
+        cbxfiltro5.val("0");
+        cbxfiltro6.val("0");
+        cbxfiltro7.val("0");
+        cbxfiltro8.val("0");
+        });
+    cbxfiltro2.change(function () {
+        cargarSeccion("cbxfiltro3", $(this).val());
+        cbxfiltro3.val("0");
+        cbxfiltro4.val("0");
+        cbxfiltro5.val("0");
+        cbxfiltro6.val("0");
+        cbxfiltro7.val("0");
+        cbxfiltro8.val("0");
+    });
+    cbxfiltro3.change(function () {
+        cargarSeccion("cbxfiltro4", $(this).val());
+        cbxfiltro4.val("0");
+        cbxfiltro5.val("0");
+        cbxfiltro6.val("0");
+        cbxfiltro7.val("0");
+        cbxfiltro8.val("0");
+    });
+    cbxfiltro4.change(function () {
+        cargarSeccion("cbxfiltro5", $(this).val());
+        cbxfiltro5.val("0");
+        cbxfiltro6.val("0");
+        cbxfiltro7.val("0");
+        cbxfiltro8.val("0");
+    });
+    cbxfiltro5.change(function () {
+        cargarSeccion("cbxfiltro6", $(this).val());
+        cbxfiltro6.val("0");
+        cbxfiltro7.val("0");
+        cbxfiltro8.val("0");
+    });
+    cbxfiltro6.change(function () {
+        cargarSeccion("cbxfiltro7", $(this).val());
+        cbxfiltro7.val("0");
+        cbxfiltro8.val("0");
+    });
+    cbxfiltro7.change(function () {
+        cargarSeccion("cbxfiltro8", $(this).val());
+        cbxfiltro8.val("0");
+    });
+    //cbxfiltro8
+
+    cbxPlantillas.change(function () {
+        var z = s.ajax({
+            data: {
+                sp: _SP
+                , opc: 8
+                , idPlantillas: $(this).val()
+            }
+        });
+
+        $.ajax(z)
+            .done(function (e) {
+                let datos = JSON.parse(e);
+                console.log(datos);
+                if (datos.bandera == "1") {
+                    $.each(datos.data.Table0, function (i, it) {
+                        jsonForms = JSON.parse(it.FormHTML);
+                        console.log(jsonForms);
+                    });
+                }
+            })
+            .fail(function (e) {
+                s.alert({ flag: "-2" });
+            });
     });
 
-    cbxAddMunicipio.change(function () {
-        cargarSeccion("cbxAddSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
-        cbxAddSeccion.val("0");
-        cbxAddSubSeccion.val("0");
-    });
+    //cbxSubSeccion.change(function () {
+    //    cargarTabla($(this).val());
+    //});
 
-    cbxAddSeccion.change(function () {
-        cargarSeccion("cbxAddSubSeccion", $(this).val());
-        cbxAddSubSeccion.val("0");
-    });
+    //cbxAddMunicipio.change(function () {
+    //    cargarSeccion("cbxAddSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
+    //    cbxAddSeccion.val("0");
+    //    cbxAddSubSeccion.val("0");
+    //});
+
+    //cbxAddSeccion.change(function () {
+    //    cargarSeccion("cbxAddSubSeccion", $(this).val());
+    //    cbxAddSubSeccion.val("0");
+    //});
 
     txtQuestion.keypress(function (e) {
         //no recuerdo la fuente pero lo recomiendan para
@@ -251,8 +346,17 @@ function addOpt(txt, i) {
 }
 
 function saveTags() {
+
+    console.log(txtTags.tagsinput("items"));
+    console.log(jsonForms);
+    
+    
+    
+    console.log(jsonForms);
+
     let idSec = idSeccion();
     if (idSec != "0") {
+        $.extend(true, jsonForms, txtTags.tagsinput("items"));
         var z = s.ajax({
             funcion:"saveFrm"
             ,data: {
@@ -260,7 +364,7 @@ function saveTags() {
                 , opc: _opt
                 , idMunicipio: _IDMun //id temporal cambiar por uno correvto
                 , idFormulario: _Id
-                , FormHTML: JSON.stringify(txtTags.tagsinput("items"))
+                , FormHTML: JSON.stringify(jsonForms)
                 , jquery: ""
                 , nodejs: ""
                 , nombre: txtNombre.val()
@@ -268,19 +372,19 @@ function saveTags() {
             }
         });
 
-        $.ajax(z)
-            .done(function (e) {
-                let datos = JSON.parse(e);
-                _opt = 1;
-                limpiar();
-                cargarTabla();
-                vTbl.show();
-                vAdd.hide();
-                s.alert({ flag: datos.bandera, msg: datos.mensaje });
-            })
-            .fail(function (e) {
-                s.alert({ flag: "-2" });
-            });
+        //$.ajax(z)
+        //    .done(function (e) {
+        //        let datos = JSON.parse(e);
+        //        _opt = 1;
+        //        limpiar();
+        //        cargarTabla();
+        //        vTbl.show();
+        //        vAdd.hide();
+        //        s.alert({ flag: datos.bandera, msg: datos.mensaje });
+        //    })
+        //    .fail(function (e) {
+        //        s.alert({ flag: "-2" });
+        //    });
     }
     else {
         s.alert({ flag: "-1", msg: "Aun no se ha seleccionado un Municipio o Seccion o Subseccion" });
@@ -300,8 +404,12 @@ function cargarMunicipio() {
                 tbl: "Table0"
                 , inicial: true
             }
-            , cbxAddMunicipio: {
+            , cbxfiltro1: {
                 tbl: "Table0"
+                , inicial: true
+            }
+            , cbxPlantillas: {
+                tbl: "Table1"
                 , inicial: true
             }
         }
@@ -323,17 +431,33 @@ function cargarSeccion(cbxE, id) {
         tbl: "Table0"
                 , inicial: true
     };
-    s.cbx(c);
+    s.cbx(c);   
+
 }
 
 function idSeccion() {
     let id = "0"
-    if (cbxAddMunicipio.val() != undefined && cbxAddMunicipio.val() != "0") {
-        id = cbxAddMunicipio.val() + '-' + cbxAddMunicipio.find("option:selected").text();
-        if (cbxAddSeccion.val() != undefined && cbxAddSeccion.val() != "0") {
-            id = cbxAddSeccion.val();
-            if (cbxAddSubSeccion.val() != undefined && cbxAddSubSeccion.val() != "0") {
-                id = cbxAddSubSeccion.val();
+    if (cbxfiltro1.val() != undefined && cbxfiltro1.val() != "0") {
+        id = cbxfiltro1.val() + '-' + cbxfiltro1.find("option:selected").text();
+        if (cbxfiltro2.val() != undefined && cbxfiltro2.val() != "0") {
+            id = cbxfiltro2.val();
+            if (cbxfiltro3.val() != undefined && cbxfiltro3.val() != "0") {
+                id = cbxfiltro3.val();
+                if (cbxfiltro4.val() != undefined && cbxfiltro4.val() != "0") {
+                    id = cbxfiltro4.val();
+                    if (cbxfiltro5.val() != undefined && cbxfiltro5.val() != "0") {
+                        id = cbxfiltro5.val();
+                        if (cbxfiltro6.val() != undefined && cbxfiltro6.val() != "0") {
+                            id = cbxfiltro6.val();
+                            if (cbxfiltro7.val() != undefined && cbxfiltro7.val() != "0") {
+                                id = cbxfiltro7.val();
+                                if (cbxfiltro8.val() != undefined && cbxfiltro8.val() != "0") {
+                                    id = cbxfiltro8.val();
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
