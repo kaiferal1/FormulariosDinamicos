@@ -90,7 +90,7 @@ namespace webDinamicsForms.Controllers
                             Session["idMunicipio"] = it["idMunicipio"];
                         }
                     }
-                    obj.mensaje = "Dinamic/Dinamic/Index";//
+                    obj.mensaje = "Index";//Dinamic/Dinamic/
 
                     if (obj.data.ContainsKey("Table1"))
                     {
