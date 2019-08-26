@@ -192,6 +192,9 @@ s.agregar({
                     case "tel":
                         tmp.append($("<input>", { type: "tel", class: "form-control  required", id: "tel" + o.id }));
                         break;
+                    case "file":
+                        tmp.append($("<input>", { type: "file", class: "form-control  required", id: "file" + o.id }));
+                        break;
                     case "checkbox":
                         let dataCkbx = JSON.parse(o.cat);
                         $.each(dataCkbx, function (i, it) {

@@ -194,6 +194,7 @@ namespace webDinamicsForms.Controllers
         {
             try
             {
+                HttpFileCollectionBase archivos = Request.Files;
                 NameValueCollection datos = Request.Form;
                 ParametrosSp param = new ParametrosSp();
                 JsonRest rt = new JsonRest();

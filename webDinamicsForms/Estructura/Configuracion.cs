@@ -10,7 +10,7 @@ namespace webDinamicsForms.Estructura
         /// <summary>
         /// Ruta donde se guardaran los archivos de las ordenes de compra
         /// </summary>
-        static string _rutaArchivos = "EISENMAN/Files";
+        static string _rutaArchivos = "DinamicForms/Files";
         public static string RutaArchivos
         {
             get
@@ -22,7 +22,7 @@ namespace webDinamicsForms.Estructura
         /// <summary>
         /// Ruta ddonde se guardaran los archivos de manera temporal para su descarga por los usuarios; el contenido de esta carpeta se puede borrar sin problema
         /// </summary>
-        static string _rutaDescargas = "EISENMAN/Files/_temp/";
+        static string _rutaDescargas = "DinamicForms/Files/_temp/";
         public static string RutaDescargas
         {
             get
