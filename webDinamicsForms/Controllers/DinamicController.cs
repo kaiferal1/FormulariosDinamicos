@@ -85,17 +85,12 @@ namespace webDinamicsForms.Controllers
                 {
                     foreach (Dictionary<string, string> it in obj.data["Table0"])
                     {
-                        if (it.ContainsKey("idMunicipio"))
+                        if (it.ContainsKey("idTipoUser"))
                         {
-                            Session["idMunicipio"] = it["idMunicipio"];
+                            Session["idTipoUser"] = it["idTipoUser"];
                         }
                     }
                     obj.mensaje = "Index";//Dinamic/Dinamic/
-
-                    if (obj.data.ContainsKey("Table1"))
-                    {
-                        Session["json"] = JsonConvert.SerializeObject(obj.data["Table1"]);
-                    }
                 }
                 return Json(obj.ToString());
             }

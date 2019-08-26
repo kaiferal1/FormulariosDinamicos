@@ -73,7 +73,7 @@ function obtenerControles() {
     cbxfiltro6 = $("#cbxfiltro6");
     cbxfiltro7 = $("#cbxfiltro7");
     cbxfiltro8 = $("#cbxfiltro8");
-    cbxPlantillas = $("#cbxPlantillas");
+    cbxPlantillas = $("#cbxPlantillas").parent().hide();
 }
 
 /*
@@ -228,21 +228,6 @@ function asignarEventos() {
             });
     });
 
-    //cbxSubSeccion.change(function () {
-    //    cargarTabla($(this).val());
-    //});
-
-    //cbxAddMunicipio.change(function () {
-    //    cargarSeccion("cbxAddSeccion", $(this).val() + '-' + $(this).find("option:selected").text());
-    //    cbxAddSeccion.val("0");
-    //    cbxAddSubSeccion.val("0");
-    //});
-
-    //cbxAddSeccion.change(function () {
-    //    cargarSeccion("cbxAddSubSeccion", $(this).val());
-    //    cbxAddSubSeccion.val("0");
-    //});
-
     txtQuestion.keypress(function (e) {
         //no recuerdo la fuente pero lo recomiendan para
         //mayor compatibilidad entre navegadores.
@@ -353,7 +338,6 @@ function saveTags() {
 
     let idSec = idSeccion();
     if (idSec != "0") {
-        $.extend(true, jsonForms, txtTags.tagsinput("items"));
         var z = s.ajax({
             funcion:"saveFrm"
             ,data: {
@@ -361,7 +345,7 @@ function saveTags() {
                 , opc: _opt
                 , idMunicipio: _IDMun //id temporal cambiar por uno correvto
                 , idFormulario: _Id
-                , FormHTML: JSON.stringify(jsonForms)
+                , FormHTML: JSON.stringify(txtTags.tagsinput("items"))
                 , jquery: ""
                 , nodejs: ""
                 , nombre: txtNombre.val()

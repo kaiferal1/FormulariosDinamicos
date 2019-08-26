@@ -35,42 +35,9 @@
     <script src="~/Plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="~/Plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
 
-
 </head>
 <body>
-    @*<header id="topnav">
-        <div class="topbar-main">
-            <div class="container-fluid">
-                <h2 class="m-0" style="color:red">Dinamic Forms</h2>
-            </div>
-        </div>
-
-        <div class="navbar-custom">
-            <div class="container-fluid">
-                <div id="navigation">
-                    <!-- Navigation Menu-->
-                    <ul class="navigation-menu">
-                        <li class="has-submenu">
-                            <a href="../Dinamic/Index" class="admin">Index</a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="../Dinamic/Campos" class="admin">Campos</a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="../Dinamic/Plantillas" class="admin">Plantillas</a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="../Dinamic/Formulario">Formularios</a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="../Dinamic/Resultados">Resultados</a>
-                        </li>
-                    </ul>
-                    <!-- End navigation menu -->
-                </div> <!-- end #navigation -->
-            </div> <!-- end container -->
-        </div> <!-- end navbar-custom -->
-    </header>*@
+   
     <div class="container mb-2">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#"><img src="http://gygconsultores.com.mx/plataforma/imagenes/logo-gyg-sm.png" /></a>
@@ -80,19 +47,16 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../Dinamic/Index">Inicio</a>
+                        <a class="nav-link" href="../Dinamic/Index" id="navIndex">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../Dinamic/Campos">Crear Actividad</a>
+                        <a class="nav-link" href="../Dinamic/Campos" id="navCampos">Crear Actividad</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../Dinamic/Formulario">Actividades</a>
+                        <a class="nav-link" href="../Dinamic/Formulario" id="navFormularios">Actividades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../Dinamic/Plantillas">Programas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Dinamic/Resultados">Reportes</a>
+                        <a class="nav-link" href="../Dinamic/Resultados" id="navResultados">Reportes</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -109,6 +73,35 @@
         </footer>
     </div>
 
-    
+    <script type="text/javascript">
+        const idTipo = @Session["idTipoUser"];
+        console.log(idTipo);
+        $("#navIndex").hide();
+        $("#navCampos").hide();
+        $("#navPlantillas").hide();
+        $("#navFormularios").hide();
+        $("#navResultados").hide();
+        if (idTipo == 1) {
+            $("#navIndex").show();
+            $("#navCampos").show();
+            $("#navPlantillas").show();
+            $("#navFormularios").show();
+            $("#navResultados").show();
+        }
+        else if (idTipo == 2) {
+            $("#navIndex").hide();
+            $("#navCampos").show();
+            $("#navPlantillas").hide();
+            $("#navFormularios").show();
+            $("#navResultados").show();
+        }
+        else if (idTipo == 3) {
+            $("#navIndex").hide();
+            $("#navCampos").hide();
+            $("#navPlantillas").hide();
+            $("#navFormularios").show();
+            $("#navResultados").show();
+        }
+    </script>
 </body>
 </html>
