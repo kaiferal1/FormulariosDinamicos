@@ -54,8 +54,8 @@ namespace webDinamicsForms.Controllers
         /// <returns></returns>
         public ActionResult logout()
         {
-            Session["IdProveedor"] = null;
-            Session["tipoUser"] = null;
+            //Session["IdProveedor"] = null;
+            //Session["tipoUser"] = null;
             return Json(new JsonRest("/Dinamic/Dinamic/Login", "1").ToString());
         }
 

@@ -18,11 +18,11 @@ var txtQuestion
     , cbxfiltro1
     , cbxfiltro2
     , cbxfiltro3
-    , cbxfiltro4
-    , cbxfiltro5
-    , cbxfiltro6
-    , cbxfiltro7
-    , cbxfiltro8
+    //, cbxfiltro4
+    //, cbxfiltro5
+    //, cbxfiltro6
+    //, cbxfiltro7
+    //, cbxfiltro8
     //, txtTgsOptions
     , txtOpt
     , btnAddOpt
@@ -31,7 +31,8 @@ var txtQuestion
     , txtOpt
     //, btnAddOpt
     , txtTagsOpt
-    , cbxPlantillas;
+    , cbxPlantillas
+    , cbxCat;
 
 
 var _opt = 1, _Id = 0, _IDMun =0, _SP = "Formularios_CRUD", _Inx = 0, _InxOpt = 0, jsonForms=new Object();
@@ -68,12 +69,13 @@ function obtenerControles() {
     cbxfiltro1 = $("#cbxfiltro1");
     cbxfiltro2 = $("#cbxfiltro2");
     cbxfiltro3 = $("#cbxfiltro3");
-    cbxfiltro4 = $("#cbxfiltro4");
-    cbxfiltro5 = $("#cbxfiltro5");
-    cbxfiltro6 = $("#cbxfiltro6");
-    cbxfiltro7 = $("#cbxfiltro7");
-    cbxfiltro8 = $("#cbxfiltro8");
+    //cbxfiltro4 = $("#cbxfiltro4");
+    //cbxfiltro5 = $("#cbxfiltro5");
+    //cbxfiltro6 = $("#cbxfiltro6");
+    //cbxfiltro7 = $("#cbxfiltro7");
+    //cbxfiltro8 = $("#cbxfiltro8");
     cbxPlantillas = $("#cbxPlantillas").parent().hide();
+    cbxCat = $("#cbxCat");
 }
 
 /*
@@ -84,6 +86,7 @@ function asignarEventos() {
     vTbl.show();
     vAdd.hide();
     divOpt.hide();
+    cbxCat.parent().hide();
 
     txtTags.tagsinput({
         itemValue: 'id'
@@ -171,62 +174,61 @@ function asignarEventos() {
         cbxfiltro7.val("0");
         cbxfiltro8.val("0");
     });
-    cbxfiltro3.change(function () {
-        cargarSeccion("cbxfiltro4", $(this).val());
-        cbxfiltro4.val("0");
-        cbxfiltro5.val("0");
-        cbxfiltro6.val("0");
-        cbxfiltro7.val("0");
-        cbxfiltro8.val("0");
-    });
-    cbxfiltro4.change(function () {
-        cargarSeccion("cbxfiltro5", $(this).val());
-        cbxfiltro5.val("0");
-        cbxfiltro6.val("0");
-        cbxfiltro7.val("0");
-        cbxfiltro8.val("0");
-    });
-    cbxfiltro5.change(function () {
-        cargarSeccion("cbxfiltro6", $(this).val());
-        cbxfiltro6.val("0");
-        cbxfiltro7.val("0");
-        cbxfiltro8.val("0");
-    });
-    cbxfiltro6.change(function () {
-        cargarSeccion("cbxfiltro7", $(this).val());
-        cbxfiltro7.val("0");
-        cbxfiltro8.val("0");
-    });
-    cbxfiltro7.change(function () {
-        cargarSeccion("cbxfiltro8", $(this).val());
-        cbxfiltro8.val("0");
-    });
-    //cbxfiltro8
+    //cbxfiltro3.change(function () {
+    //    cargarSeccion("cbxfiltro4", $(this).val());
+    //    cbxfiltro4.val("0");
+    //    cbxfiltro5.val("0");
+    //    cbxfiltro6.val("0");
+    //    cbxfiltro7.val("0");
+    //    cbxfiltro8.val("0");
+    //});
+    //cbxfiltro4.change(function () {
+    //    cargarSeccion("cbxfiltro5", $(this).val());
+    //    cbxfiltro5.val("0");
+    //    cbxfiltro6.val("0");
+    //    cbxfiltro7.val("0");
+    //    cbxfiltro8.val("0");
+    //});
+    //cbxfiltro5.change(function () {
+    //    cargarSeccion("cbxfiltro6", $(this).val());
+    //    cbxfiltro6.val("0");
+    //    cbxfiltro7.val("0");
+    //    cbxfiltro8.val("0");
+    //});
+    //cbxfiltro6.change(function () {
+    //    cargarSeccion("cbxfiltro7", $(this).val());
+    //    cbxfiltro7.val("0");
+    //    cbxfiltro8.val("0");
+    //});
+    //cbxfiltro7.change(function () {
+    //    cargarSeccion("cbxfiltro8", $(this).val());
+    //    cbxfiltro8.val("0");
+    //});
+    ////cbxfiltro8
 
-    cbxPlantillas.change(function () {
-        var z = s.ajax({
-            data: {
-                sp: _SP
-                , opc: 8
-                , idPlantillas: $(this).val()
-            }
-        });
-
-        $.ajax(z)
-            .done(function (e) {
-                let datos = JSON.parse(e);
-                console.log(datos);
-                if (datos.bandera == "1") {
-                    $.each(datos.data.Table0, function (i, it) {
-                        jsonForms = JSON.parse(it.FormHTML);
-                        console.log(jsonForms);
-                    });
-                }
-            })
-            .fail(function (e) {
-                s.alert({ flag: "-2" });
-            });
-    });
+    //cbxPlantillas.change(function () {
+    //    var z = s.ajax({
+    //        data: {
+    //            sp: _SP
+    //            , opc: 8
+    //            , idPlantillas: $(this).val()
+    //        }
+    //    });
+    //    $.ajax(z)
+    //        .done(function (e) {
+    //            let datos = JSON.parse(e);
+    //            console.log(datos);
+    //            if (datos.bandera == "1") {
+    //                $.each(datos.data.Table0, function (i, it) {
+    //                    jsonForms = JSON.parse(it.FormHTML);
+    //                    console.log(jsonForms);
+    //                });
+    //            }
+    //        })
+    //        .fail(function (e) {
+    //            s.alert({ flag: "-2" });
+    //        });
+    //});
 
     txtQuestion.keypress(function (e) {
         //no recuerdo la fuente pero lo recomiendan para
@@ -236,10 +238,15 @@ function asignarEventos() {
     });
 
     cbxTipoCtrl.change(function () {
-        
+
         if (this.value == "checkbox" || this.value == "radio" || this.value == "select") {
             divOpt.show();
-        } else { divOpt.hide(); }
+            cbxCat.parent().hide();
+        }
+        else if (this.value == "catSystem") {
+            divOpt.hide();
+            cbxCat.parent().show();
+        } else { divOpt.hide(); cbxCat.parent().hide(); }
     });
 
 }
@@ -311,13 +318,15 @@ function cargarTabla(id) {
 
 function addTag(txt, i) {
     if (txt.length > 0) {
-        let jsonCat = "";
+        let jsonCat = "",idCatDB="";
         if (cbxTipoCtrl.val() == "checkbox" || cbxTipoCtrl.val() == "radio" || cbxTipoCtrl.val() == "select") {
             jsonCat = JSON.stringify(txtTagsOpt.tagsinput("items"));
             txtTagsOpt.tagsinput('removeAll');
-            divOpt.hide();
+        } else if (cbxTipoCtrl.val() == "catSystem") {
+            idCatDB = cbxCat.val();
+            cbxCat.val("0");
         }
-        txtTags.tagsinput("add", { id: i, text: txt, type: cbxTipoCtrl.val(), cat: jsonCat });
+        txtTags.tagsinput("add", { id: i, text: txt, type: cbxTipoCtrl.val(), cat: jsonCat, idDB:idCatDB });
         txtQuestion.val("").focus();
         console.log(JSON.stringify(txtTags.tagsinput("items")));
     }
@@ -393,6 +402,10 @@ function cargarMunicipio() {
                 tbl: "Table1"
                 , inicial: true
             }
+            , cbxCat: {
+                tbl: "Table2"
+                , inicial: true
+            }
         }
     });
 }
@@ -424,21 +437,21 @@ function idSeccion() {
             id = cbxfiltro2.val();
             if (cbxfiltro3.val() != undefined && cbxfiltro3.val() != "0") {
                 id = cbxfiltro3.val();
-                if (cbxfiltro4.val() != undefined && cbxfiltro4.val() != "0") {
-                    id = cbxfiltro4.val();
-                    if (cbxfiltro5.val() != undefined && cbxfiltro5.val() != "0") {
-                        id = cbxfiltro5.val();
-                        if (cbxfiltro6.val() != undefined && cbxfiltro6.val() != "0") {
-                            id = cbxfiltro6.val();
-                            if (cbxfiltro7.val() != undefined && cbxfiltro7.val() != "0") {
-                                id = cbxfiltro7.val();
-                                if (cbxfiltro8.val() != undefined && cbxfiltro8.val() != "0") {
-                                    id = cbxfiltro8.val();
-                                }
-                            }
-                        }
-                    }
-                }
+                //if (cbxfiltro4.val() != undefined && cbxfiltro4.val() != "0") {
+                //    id = cbxfiltro4.val();
+                //    if (cbxfiltro5.val() != undefined && cbxfiltro5.val() != "0") {
+                //        id = cbxfiltro5.val();
+                //        if (cbxfiltro6.val() != undefined && cbxfiltro6.val() != "0") {
+                //            id = cbxfiltro6.val();
+                //            if (cbxfiltro7.val() != undefined && cbxfiltro7.val() != "0") {
+                //                id = cbxfiltro7.val();
+                //                if (cbxfiltro8.val() != undefined && cbxfiltro8.val() != "0") {
+                //                    id = cbxfiltro8.val();
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
             }
         }
     }

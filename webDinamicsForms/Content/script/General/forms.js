@@ -49,7 +49,6 @@ s.agregar({
             $.ajax(z)
                 .done(function (e) {
                     let datos = JSON.parse(e);
-                    console.log(datos);
                     if (datos.bandera == "1") {
                         $.each(o.selects, function (i, it) {
                             let box = $("#" + i);
@@ -63,7 +62,6 @@ s.agregar({
                             }
                             if (!$.isEmptyObject(datos.data[it.tbl])) {
                                 $.each(datos.data[it.tbl], function (a, at) {
-                                    console.log(at);
                                     let flagId = true, flagText = true, opt = $("<option>");
                                     $.each(at, function (e, et) {
                                         if (flagId) {
@@ -212,6 +210,30 @@ s.agregar({
                         tmp.append($("<select>", { class: "form-control", id: "cbx" + o.id }));
                         $.each(dataOption, function (i, it) {
                             tmp.find("select").append($("<option>", { value: it.text, html: it.text }));
+                        });
+                        //tmp.append("<input>", { type: "date", class: "form-control  required", id: "date" + o.id });
+                        break;
+                    case "catSystem":
+                        tmp.append($("<select>", { class: "form-control", id: "cbx" + o.id }));
+
+                        let z = s.ajax({
+                            data: {
+                                sp: "LlenarCampos_CRUD"
+                                , opc: 8
+                                , idCatalogos: o.idDB
+                            }
+                        });
+                        console.log(z);
+                        $.ajax(z)
+                        .done(function (e) {
+                            let datos = JSON.parse(e);
+                            console.log(datos);
+                            if (datos.bandera == "1") {
+                                $.each(datos.data.Table0, function (i, it) {
+                                    tmp.find("select").append($("<option>", { value: it.text, html: it.text }));
+                                });
+                            }
+                            s.alert({ flag: datos.bandera, msg: datos.mensaje });
                         });
                         //tmp.append("<input>", { type: "date", class: "form-control  required", id: "date" + o.id });
                         break;
