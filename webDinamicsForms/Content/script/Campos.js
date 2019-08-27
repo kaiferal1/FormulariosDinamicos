@@ -35,7 +35,7 @@ var txtQuestion
     , cbxCat;
 
 
-var _opt = 1, _Id = 0, _IDMun =0, _SP = "Formularios_CRUD", _Inx = 0, _InxOpt = 0, jsonForms=new Object();
+var _opt = 1, _Id = 0, _IDMun =0, _SP = "Formularios_CRUD", _Inx = 0, _InxOpt = 0, jsonForms = new Object();
 
 /*
  *Obtener los controles 
@@ -207,6 +207,7 @@ function asignarEventos() {
     ////cbxfiltro8
 
     cbxPlantillas.change(function () {
+        
         var z = s.ajax({
             data: {
                 sp: _SP
@@ -216,19 +217,19 @@ function asignarEventos() {
         });
         $.ajax(z)
             .done(function (e) {
+                //jsonForms = new Object();
                 let datos = JSON.parse(e);
                 
                 if (datos.bandera == "1") {
                     $.each(datos.data.Table0, function (i, it) {
-                        console.log(it);
                         jsonForms = JSON.parse(it.FormHTML);
-                        console.log(jsonForms);
                     });
                 }
             })
             .fail(function (e) {
                 s.alert({ flag: "-2" });
             });
+        console.log(jsonForms);
     });
 
     txtQuestion.keypress(function (e) {
@@ -329,7 +330,7 @@ function addTag(txt, i) {
         }
         txtTags.tagsinput("add", { id: i, text: txt, type: cbxTipoCtrl.val(), cat: jsonCat, idDB:idCatDB });
         txtQuestion.val("").focus();
-        console.log(JSON.stringify(txtTags.tagsinput("items")));
+        //console.log(JSON.stringify(txtTags.tagsinput("items")));
     }
 }
 
@@ -342,20 +343,18 @@ function addOpt(txt, i) {
 
 function saveTags() {
     let jsonTags = new Object();
+    //console.log(txtTags.tagsinput("items"));
+    //console.log(jsonForms);
+    //console.log(jsonTags);
     if (cbxPlantillas.val() != "0") {
-
         if (typeof jsonForms == "object") {
-            $.extend(true, jsonTags, jsonForms, txtTags.tagsinput("items"));
-            console.log(jsonTags);
+            jsonTags = jsonForms.concat(txtTags.tagsinput("items"));
         }
     } else {
-        $.extend(true, jsonTags, txtTags.tagsinput("items"));
-        console.log(jsonTags);
+        jsonTags = txtTags.tagsinput("items");
     }
 
-    console.log(txtTags.tagsinput("items"));
-    console.log(jsonForms);
-    console.log(JSON.stringify(jsonForms));
+    console.log(jsonTags);
 
     let idSec = idSeccion();
     if (idSec != "0") {
@@ -374,19 +373,19 @@ function saveTags() {
             }
         });
 
-        //$.ajax(z)
-        //    .done(function (e) {
-        //        let datos = JSON.parse(e);
-        //        _opt = 1;
-        //        limpiar();
-        //        cargarTabla();
-        //        vTbl.show();
-        //        vAdd.hide();
-        //        s.alert({ flag: datos.bandera, msg: datos.mensaje });
-        //    })
-        //    .fail(function (e) {
-        //        s.alert({ flag: "-2" });
-        //    });
+        $.ajax(z)
+            .done(function (e) {
+                let datos = JSON.parse(e);
+                _opt = 1;
+                limpiar();
+                cargarTabla();
+                vTbl.show();
+                vAdd.hide();
+                s.alert({ flag: datos.bandera, msg: datos.mensaje });
+            })
+            .fail(function (e) {
+                s.alert({ flag: "-2" });
+            });
     }
     else {
         s.alert({ flag: "-1", msg: "Aun no se ha seleccionado un Municipio o Seccion o Subseccion" });

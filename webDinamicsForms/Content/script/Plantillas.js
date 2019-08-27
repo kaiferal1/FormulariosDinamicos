@@ -170,13 +170,13 @@ function cargarTabla(id) {
 
 function addTag(txt, i) {
     if (txt.length > 0) {
-        let jsonCat = "";
+        let jsonCat = "", idCatDB = "";
         if (cbxTipoCtrl.val() == "checkbox" || cbxTipoCtrl.val() == "radio" || cbxTipoCtrl.val() == "select") {
             jsonCat = JSON.stringify(txtTagsOpt.tagsinput("items"));
             txtTagsOpt.tagsinput('removeAll');
             divOpt.hide();
         }
-        txtTags.tagsinput("add", { id: i, text: txt, type: cbxTipoCtrl.val(), cat: jsonCat });
+        txtTags.tagsinput("add", { id: i, text: txt, type: cbxTipoCtrl.val(), cat: jsonCat, idDB: idCatDB });
         txtQuestion.val("").focus();
         ///console.log(JSON.stringify(txtTags.tagsinput("items")));
     }
