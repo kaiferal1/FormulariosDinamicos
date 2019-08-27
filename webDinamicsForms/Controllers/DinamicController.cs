@@ -198,7 +198,11 @@ namespace webDinamicsForms.Controllers
                 NameValueCollection datos = Request.Form;
                 ParametrosSp param = new ParametrosSp();
                 JsonRest rt = new JsonRest();
-                string ltsR = "", query = "INSERT INTO dbo.FRM_{item} ";
+                string ltsR = ""
+                    , query = "INSERT INTO dbo.FRM_{item} "
+                    , queryDocs = "UPDATE dbo.FRM_{item} SET {claveValor} WHERE id{item} = "
+                    , tblName = string.Empty;
+                bool flag = true;
 
                 foreach (string nA in datos.AllKeys)
                 {
@@ -209,6 +213,8 @@ namespace webDinamicsForms.Controllers
                             break;
                         case "nombre":
                             query = query.Replace("{item}", datos["nombre"].ToString().Replace(" ", "_")) + " SELECT ";
+                            queryDocs.Replace("{item}", datos["nombre"].ToString().Replace(" ", "_"));
+                            tblName = datos["nombre"].ToString().Replace(" ", "_");
                             break;
                         case "json":
                             ltsR = datos["json"].ToString();
@@ -224,7 +230,7 @@ namespace webDinamicsForms.Controllers
                     List<JsonCampos> list = JsonConvert.DeserializeObject<List<JsonCampos>>(ltsR);
                     if (list.Count > 0)
                     {
-                        bool flag = true;
+                        flag = true;
                         foreach (JsonCampos i in list)
                         {
                             if (flag)
@@ -234,7 +240,49 @@ namespace webDinamicsForms.Controllers
                             }
                             else { query += ",'" + i.text + "'"; }
                         }
+                        query += "\n  SELECT @@IDENTITY 'id' ";
                         rt.Load(new Conexion().execString(query));
+                        if (rt.data.Count > 0) {
+                            foreach (Dictionary<string,string> it in rt.data["Table0"])
+                            {
+                                string id = it["id"], _pathArchivos =
+                        Server.MapPath("~\\" + Configuracion.RutaArchivos + "\\" + tblName + "-" + datos["ordenCompra"] + "\\");
+                                if (archivos != null && archivos.Count > 0)
+                                {
+                                    flag = true;
+                                    foreach (JsonCampos i in list)
+                                    {
+                                        if (flag)
+                                        {
+                                            query += i.id+ "='" + i.text + "'";
+                                            flag = false;
+                                        }
+                                        else { query += ", "+i.id + "='" + i.text + "'"; }
+                                    }
+                                    //foreach (string nA in archivos.AllKeys)
+                                    //{
+                                    //    HttpPostedFileBase a = archivos[nA];
+                                    //    corto = a.FileName;
+                                    //    nombreArchivo = _pathArchivos + a.FileName;
+                                    //    if (!Directory.Exists(_pathArchivos))
+                                    //    {
+                                    //        Directory.CreateDirectory(_pathArchivos);
+                                    //    }
+
+                                    //    a.SaveAs(nombreArchivo);
+                                    //}
+
+                                    //Dictionary<string, string> opcSp = new Dictionary<string, string>();
+                                    //opcSp.Add("idOrdenCompra", idPO);
+                                    //opcSp.Add("path", nombreArchivo);
+                                    //opcSp.Add("corto", corto);
+                                    //param.Parametros = opcSp;
+
+                                    //rest = new Conexion().execSP(param);
+                                }
+
+                            }
+                        }
                         if (rt.mensaje == "--")
                         {
                             rt.mensaje = "Resultados guardados correctamente";

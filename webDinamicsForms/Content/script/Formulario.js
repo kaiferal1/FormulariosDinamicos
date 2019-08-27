@@ -193,7 +193,7 @@ function saveForms() {
     formD.append("nombre", lblTitulo.html());
     formD.append("idCapturas", _idCaptura);
     $("input[type=file]").each(function (i, it) {
-        let fi = $(item);
+        let fi = $(it);
         
         if (fi.get(0).files.length === 0) {
                 flag = 1;
