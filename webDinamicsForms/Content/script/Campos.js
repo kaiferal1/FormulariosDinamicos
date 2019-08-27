@@ -74,7 +74,7 @@ function obtenerControles() {
     //cbxfiltro6 = $("#cbxfiltro6");
     //cbxfiltro7 = $("#cbxfiltro7");
     //cbxfiltro8 = $("#cbxfiltro8");
-    cbxPlantillas = $("#cbxPlantillas").parent().hide();
+    cbxPlantillas = $("#cbxPlantillas");
     cbxCat = $("#cbxCat");
 }
 
@@ -159,29 +159,29 @@ function asignarEventos() {
         cargarSeccion("cbxfiltro2", $(this).val() + '-' + $(this).find("option:selected").text());
         cbxfiltro2.val("0");
         cbxfiltro3.val("0");
-        cbxfiltro4.val("0");
-        cbxfiltro5.val("0");
-        cbxfiltro6.val("0");
-        cbxfiltro7.val("0");
-        cbxfiltro8.val("0");
+        //cbxfiltro4.val("0");
+        //cbxfiltro5.val("0");
+        //cbxfiltro6.val("0");
+        //cbxfiltro7.val("0");
+        //cbxfiltro8.val("0");
         });
     cbxfiltro2.change(function () {
         cargarSeccion("cbxfiltro3", $(this).val());
         cbxfiltro3.val("0");
-        cbxfiltro4.val("0");
-        cbxfiltro5.val("0");
-        cbxfiltro6.val("0");
-        cbxfiltro7.val("0");
-        cbxfiltro8.val("0");
+        //cbxfiltro4.val("0");
+        //cbxfiltro5.val("0");
+        //cbxfiltro6.val("0");
+        //cbxfiltro7.val("0");
+        //cbxfiltro8.val("0");
     });
-    //cbxfiltro3.change(function () {
-    //    cargarSeccion("cbxfiltro4", $(this).val());
-    //    cbxfiltro4.val("0");
-    //    cbxfiltro5.val("0");
-    //    cbxfiltro6.val("0");
-    //    cbxfiltro7.val("0");
-    //    cbxfiltro8.val("0");
-    //});
+    cbxfiltro3.change(function () {
+        cargarSeccion("cbxfiltro4", $(this).val());
+        //cbxfiltro4.val("0");
+        //cbxfiltro5.val("0");
+        //cbxfiltro6.val("0");
+        //cbxfiltro7.val("0");
+        //cbxfiltro8.val("0");
+    });
     //cbxfiltro4.change(function () {
     //    cargarSeccion("cbxfiltro5", $(this).val());
     //    cbxfiltro5.val("0");
@@ -206,29 +206,30 @@ function asignarEventos() {
     //});
     ////cbxfiltro8
 
-    //cbxPlantillas.change(function () {
-    //    var z = s.ajax({
-    //        data: {
-    //            sp: _SP
-    //            , opc: 8
-    //            , idPlantillas: $(this).val()
-    //        }
-    //    });
-    //    $.ajax(z)
-    //        .done(function (e) {
-    //            let datos = JSON.parse(e);
-    //            console.log(datos);
-    //            if (datos.bandera == "1") {
-    //                $.each(datos.data.Table0, function (i, it) {
-    //                    jsonForms = JSON.parse(it.FormHTML);
-    //                    console.log(jsonForms);
-    //                });
-    //            }
-    //        })
-    //        .fail(function (e) {
-    //            s.alert({ flag: "-2" });
-    //        });
-    //});
+    cbxPlantillas.change(function () {
+        var z = s.ajax({
+            data: {
+                sp: _SP
+                , opc: 8
+                , idPlantillas: $(this).val()
+            }
+        });
+        $.ajax(z)
+            .done(function (e) {
+                let datos = JSON.parse(e);
+                
+                if (datos.bandera == "1") {
+                    $.each(datos.data.Table0, function (i, it) {
+                        console.log(it);
+                        jsonForms = JSON.parse(it.FormHTML);
+                        console.log(jsonForms);
+                    });
+                }
+            })
+            .fail(function (e) {
+                s.alert({ flag: "-2" });
+            });
+    });
 
     txtQuestion.keypress(function (e) {
         //no recuerdo la fuente pero lo recomiendan para
@@ -340,6 +341,17 @@ function addOpt(txt, i) {
 }
 
 function saveTags() {
+    let jsonTags = new Object();
+    if (cbxPlantillas.val() != "0") {
+
+        if (typeof jsonForms == "object") {
+            $.extend(true, jsonTags, jsonForms, txtTags.tagsinput("items"));
+            console.log(jsonTags);
+        }
+    } else {
+        $.extend(true, jsonTags, txtTags.tagsinput("items"));
+        console.log(jsonTags);
+    }
 
     console.log(txtTags.tagsinput("items"));
     console.log(jsonForms);
@@ -354,7 +366,7 @@ function saveTags() {
                 , opc: _opt
                 , idMunicipio: _IDMun //id temporal cambiar por uno correvto
                 , idFormulario: _Id
-                , FormHTML: JSON.stringify(txtTags.tagsinput("items"))
+                , FormHTML: JSON.stringify(jsonTags)//txtTags.tagsinput("items"))
                 , jquery: ""
                 , nodejs: ""
                 , nombre: txtNombre.val()
@@ -362,19 +374,19 @@ function saveTags() {
             }
         });
 
-        $.ajax(z)
-            .done(function (e) {
-                let datos = JSON.parse(e);
-                _opt = 1;
-                limpiar();
-                cargarTabla();
-                vTbl.show();
-                vAdd.hide();
-                s.alert({ flag: datos.bandera, msg: datos.mensaje });
-            })
-            .fail(function (e) {
-                s.alert({ flag: "-2" });
-            });
+        //$.ajax(z)
+        //    .done(function (e) {
+        //        let datos = JSON.parse(e);
+        //        _opt = 1;
+        //        limpiar();
+        //        cargarTabla();
+        //        vTbl.show();
+        //        vAdd.hide();
+        //        s.alert({ flag: datos.bandera, msg: datos.mensaje });
+        //    })
+        //    .fail(function (e) {
+        //        s.alert({ flag: "-2" });
+        //    });
     }
     else {
         s.alert({ flag: "-1", msg: "Aun no se ha seleccionado un Municipio o Seccion o Subseccion" });

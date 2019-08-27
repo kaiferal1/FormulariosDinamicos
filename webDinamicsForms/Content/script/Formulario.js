@@ -184,20 +184,38 @@ function cargarSeccion(cbxE, id) {
 }
 
 function saveForms() {
-    
-    var z = s.ajax({
-        funcion: "saveResult"
-            ,data: {
-                sp: _SP
-                , opc: _opt
-                , idForm: _Id
-                , json: generateJSON()
-                , nombre: lblTitulo.html()
-                , idCapturas :_idCaptura
-            }
-        });
 
-    console.log(z);
+    let formD = new FormData();
+    formD.append("sp", _SP);
+    formD.append("opc", _opt);
+    formD.append("idForm", _Id);
+    formD.append("json",generateJSON() );
+    formD.append("nombre", lblTitulo.html());
+    formD.append("idCapturas", _idCaptura);
+    $("input[type=file]").each(function (i, it) {
+        let fi = $(item);
+        
+        if (fi.get(0).files.length === 0) {
+                flag = 1;
+                s.alert({ flag: "-1", msg: "No se ha cargado un archivo favor de Verificar" });
+                return false;
+            }
+            else {
+            formD.append(fi.parent().find("label").html(), fi.prop("files")[0]);
+            }
+        
+    });
+    
+    let z = {
+        url: 'saveResult'
+        , type: 'POST'
+        , contentType: false
+        , data: formD
+        , processData: false
+        , cache: false
+        , beforeSend: function () { s.loader.show(); }
+        , complete: function () { s.loader.hide(); }
+    };
 
         $.ajax(z)
             .done(function (e) {
